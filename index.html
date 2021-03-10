@@ -1,7 +1,10 @@
 <html>
 <head>
 	<script type=“text/javascript”>
-		alert('asdasda');
+		window.onload = function() {
+		  SetAge();
+		};
+		
 		function SetAge()
 		{
 			window.external.Incident.SetCustomFieldByName(“c$age_test”, 'test js');
@@ -15,5 +18,4 @@
 		}
 	</script>
 </head>
-<body onload=SetAge()></body>
 </html>
