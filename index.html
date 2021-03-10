@@ -3,6 +3,10 @@
 		let createdTime = window.external.Incident.CreatedTime;
 		let updatedTime = window.external.Incident.UpdatedTime;
 
+		alert('Test 1');
+		alert(createdTime);
+		alert(updatedTime);
+
 		let ageFieldValue = null;
 		if (typeof updatedTime !== 'undefined') {
 			window.external.Incident.SetCustomFieldByName("c$age_test", "updatedTime diff " + updatedTime);
