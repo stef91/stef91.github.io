@@ -1,10 +1,13 @@
 <script>
-	function setAge()
-	{
+	function setAge() {
 		let createdTime = window.external.Incident.GetCustomFieldByName("CreatedTime");
 		let updatedTime = window.external.Incident.GetCustomFieldByName("UpdatedTime");
 		window.external.Incident.SetCustomFieldByName("c$age_test", createdTime + ' ' + updatedTime);
 		return;
+	}
+
+	function ondataupdated(obj) {
+		SetAge();
 	}
 
 	setAge();
