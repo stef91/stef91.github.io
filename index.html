@@ -2,7 +2,9 @@
 	function setAge() {
 		var createdTime = window.external.Incident.GetCustomFieldByName("CreatedTime");
 		var updatedTime = window.external.Incident.GetCustomFieldByName("UpdatedTime");
-		window.external.Incident.SetCustomFieldByName("c$age_test", "test " + createdTime + " altceva " + updatedTime);
+		window.external.Incident.SetCustomFieldByName(
+			"c$age_test", "test " + createdTime.toString() + " altceva " + updatedTime.toString()
+		);
 		return;	
 	}
 
