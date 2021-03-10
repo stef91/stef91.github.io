@@ -1,13 +1,34 @@
 <script>
 	function setAge() {
+		var subject1 = window.external.Incident.GetCustomFieldByName("Subject");
+		alert(subject1);
+
+		var subject2 = window.external.Incident.GetCustomFieldByName("Incident.Subject");
+		alert(subject2);
+
+		var subject3 = window.external.Incident.GetCustomFieldByName("Incident$Subject");
+		alert(subject3);
+
+		var subject4 = window.external.Incident.GetFieldByName("Subject");
+		alert(subject4);
+
+
 		var createdTime = window.external.Incident.GetCustomFieldByName("CreatedTime");
-		alert(createdTime);
 		var updatedTime = window.external.Incident.GetCustomFieldByName("UpdatedTime");
-		alert(updatedTime);
-		window.external.Incident.SetCustomFieldByName(
-			"c$age_test", "test " + " altceva "
-		);
-		return;	
+
+		$ageFieldValue = null;
+		if (typeof updatedTime !== 'undefined') {
+			window.external.Incident.SetCustomFieldByName("c$age_test", 'updatedTime diff');
+			return;
+		}
+
+		if (typeof createdTime !== 'undefined') {
+			window.external.Incident.SetCustomFieldByName("c$age_test", 'createdTime diff');
+			return;
+		}
+
+		window.external.Incident.SetCustomFieldByName("c$age_test", 'N/A');
+		return;
 	}
 
 	function ondataupdated(obj) {
