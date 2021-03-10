@@ -1,8 +1,12 @@
-<script>
-function OnLoad()
-{
-	alert('1212');
-	window.external.Incident.SetCustomFieldByName("c$age_test", "test js");
-	return;
-}
-</script>
+<html>
+<head>
+	<script>
+		function setAge()
+		{
+			window.external.Incident.SetCustomFieldByName("c$age_test", "test js");
+			return;
+		}
+	</script>
+</head>
+<body onload="setAge();"></body>
+</html>
