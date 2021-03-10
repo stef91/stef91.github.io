@@ -1,9 +1,9 @@
 <script>
 	function setAge() {
 		var createdTime = window.external.Incident.GetCustomFieldByName("CreatedTime");
-		console.log(createdTime);
+		alert(createdTime);
 		var updatedTime = window.external.Incident.GetCustomFieldByName("UpdatedTime");
-		console.log(updatedTime);
+		alert(updatedTime);
 		window.external.Incident.SetCustomFieldByName(
 			"c$age_test", "test " + " altceva "
 		);
