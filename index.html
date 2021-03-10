@@ -1,18 +1,6 @@
 <script>
 	function setAge() {
-		var subject1 = window.external.Incident.GetCustomFieldByName("c$Subject");
-		alert(subject1);
-
-		var subject2 = window.external.Incident.GetCustomFieldByName("$Subject");
-		alert(subject2);
-
-		var subject3 = window.external.Incident.GetCustomFieldByName("Incident$Subject");
-		alert(subject3);
-
-		var subject4 = window.external.Incident.GetCustomFieldByName("c$start_date");
-		alert(subject4);
-
-		var subject5 = window.external.Incident;
+		var subject5 = window.external.Incident.Subject;
 		alert(subject5);
 
 		var createdTime = window.external.Incident.GetCustomFieldByName("CreatedTime");
