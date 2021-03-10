@@ -5,16 +5,16 @@
 
 		let ageFieldValue = null;
 		if (typeof updatedTime !== 'undefined') {
-			window.external.Incident.SetCustomFieldByName("c$age_test", 'updatedTime diff' + updatedTime);
+			window.external.Incident.SetCustomFieldByName("c$age_test", "updatedTime diff " + updatedTime);
 			return;
 		}
 
 		if (typeof createdTime !== 'undefined') {
-			window.external.Incident.SetCustomFieldByName("c$age_test", 'createdTime diff' + createdTime);
+			window.external.Incident.SetCustomFieldByName("c$age_test", "createdTime diff " + createdTime);
 			return;
 		}
 
-		window.external.Incident.SetCustomFieldByName("c$age_test", 'N/A');
+		window.external.Incident.SetCustomFieldByName("c$age_test", "N/A");
 	}
 
 	function ondataupdated(obj) {
