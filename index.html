@@ -1,1 +1,19 @@
-Hello World
+<html>
+<head>
+	<script type=“text/javascript”>
+		alert('asdasda');
+		function SetAge()
+		{
+			window.external.Incident.SetCustomFieldByName(“c$age_test”, 'test js');
+			return;
+		}
+
+
+		function ondataupdated(obj)
+		{
+			SetAge();
+		}
+	</script>
+</head>
+<body onload=SetAge()></body>
+</html>
