@@ -1,13 +1,13 @@
 <script>
 	function setAge() {
-		let createdTime = window.external.Incident.CreatedTime;
-		let updatedTime = window.external.Incident.UpdatedTime;
+		var createdTime = window.external.Incident.CreatedTime;
+		var updatedTime = window.external.Incident.UpdatedTime;
 
 		alert('Test 1');
 		alert(createdTime);
 		alert(updatedTime);
 
-		let ageFieldValue = null;
+		var ageFieldValue = null;
 		if (typeof updatedTime !== 'undefined') {
 			window.external.Incident.SetCustomFieldByName("c$age_test", "updatedTime diff " + updatedTime);
 			return;
