@@ -21,7 +21,7 @@
 			return "N/A";
 		}
 
-		var now = let now = Date.now() / 1000 | 0;
+		var now = Date.now() / 1000 | 0;
 		var diff = now - start;
 
 		var days = diff / 86400 | 0;  ///  number of days 
@@ -30,9 +30,10 @@
 		return days + ' days' + hours + ' hours ago';
 	}
 
-	function ondataupdated(obj) {
-		setAge();
-	}
+	// activate this method if we need to update the field on every change
+	// function ondataupdated(obj) {
+	// 	setAge();
+	// }
 
 	setAge();
 </script>
