@@ -29,29 +29,26 @@
 
         var output = '';
         if (daysDiff > 0) {
-            output += daysDiff;
-            if (daysDiff === 1) {
-                output += ' day';
-            }
-
+            output += daysDiff + ' ' + pluralize('day', daysDiff);
             if (daysDiff > 1) {
-                output += ' days';
+                output += 's';
             }
         }
 
         if (hoursDiff > 0) {
-            output += ' and ' + hoursDiff;
-            if (daysDiff === 1) {
-                output += ' hour';
-            }
-
-            if (daysDiff > 1) {
-                output += ' hours';
-            }
+            output += ' and ' + hoursDiff + ' ' + pluralize('hour', hoursDiff);
         }
 
         output += ' ago';
         return output;
+    }
+
+    function pluralize(baseString, count) {
+        if (count > 1) {
+            return baseString + 's';
+        }
+
+        return baseString;
     }
 
     function ondataupdated(obj) {
