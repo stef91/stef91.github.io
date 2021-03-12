@@ -32,8 +32,12 @@
             output += daysDiff + ' ' + pluralize('day', daysDiff);
         }
 
+        if (daysDiff > 0 && hoursDiff > 0) {
+            output += ' and ';
+        }
+
         if (hoursDiff > 0) {
-            output += ' and ' + hoursDiff + ' ' + pluralize('hour', hoursDiff);
+            output += hoursDiff + ' ' + pluralize('hour', hoursDiff);
         }
 
         output += ' ago';
