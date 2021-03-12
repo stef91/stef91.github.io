@@ -27,13 +27,12 @@
 		var daysDiff = secondsDiff / 86400 | 0;  ///  number of days 
 		var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
 
-		return daysDiff + ' days' + hoursDiff + ' hours ago';
+		return daysDiff + ' days and ' + hoursDiff + ' hours ago';
 	}
 
-	// activate this method if we need to update the field on every change
-	// function ondataupdated(obj) {
-	// 	setAge();
-	// }
+	function ondataupdated(obj) {
+		setAge();
+	}
 
 	setAge();
 </script>
