@@ -21,13 +21,13 @@
 			return "N/A";
 		}
 
-		var now = Date.now() / 1000 | 0;
-		var diff = now - start;
+		var nowTimestamp = Date.now() / 1000 | 0;
+		var secondsDiff = nowTimestamp - lastSavedChange;
 
-		var days = diff / 86400 | 0;  ///  number of days 
-		var hours = diff % 86400 / (60 * 60) | 0;  ////  number of hours
+		var daysDiff = secondsDiff / 86400 | 0;  ///  number of days 
+		var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
 
-		return days + ' days' + hours + ' hours ago';
+		return daysDiff + ' days' + hoursDiff + ' hours ago';
 	}
 
 	// activate this method if we need to update the field on every change
