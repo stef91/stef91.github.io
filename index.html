@@ -1,38 +1,62 @@
 <script>
-	function setAge() {
-		var createdTime = window.external.Incident.Created;
-		var updatedTime = window.external.Incident.Updated;
+    function setAge() {
+        var createdTime = window.external.Incident.Created;
+        var updatedTime = window.external.Incident.Updated;
 
-		var lastSavedChange = null;
-		if (typeof createdTime !== 'undefined') {
-			lastSavedChange = createdTime;
-		}
+        var lastSavedChange = null;
+        if (typeof createdTime !== 'undefined') {
+            lastSavedChange = createdTime;
+        }
 
-		if (typeof updatedTime !== 'undefined') {
-			lastSavedChange = updatedTime;
-		}
+        if (typeof updatedTime !== 'undefined') {
+            lastSavedChange = updatedTime;
+        }
 
-		var lastSavedChangeMessage = computeLastSaved(lastSavedChange);
-		window.external.Incident.SetCustomFieldByName("c$age_test", lastSavedChangeMessage);
-	}
+        var lastSavedChangeMessage = computeLastSaved(lastSavedChange);
+        window.external.Incident.SetCustomFieldByName("c$age_test", lastSavedChangeMessage);
+    }
 
-	function computeLastSaved(lastSavedChange) {
-		if (null === lastSavedChange) {
-			return "N/A";
-		}
+    function computeLastSaved(lastSavedChange) {
+        if (null === lastSavedChange) {
+            return "N/A";
+        }
 
-		var nowTimestamp = Date.now() / 1000 | 0;
-		var secondsDiff = nowTimestamp - lastSavedChange;
+        var nowTimestamp = Date.now() / 1000 | 0;
+        var secondsDiff = nowTimestamp - lastSavedChange;
 
-		var daysDiff = secondsDiff / 86400 | 0;  ///  number of days 
-		var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
+        var daysDiff = secondsDiff / 86400 | 0;  ///  number of days
+        var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
 
-		return daysDiff + ' days and ' + hoursDiff + ' hours ago';
-	}
+        var output = '';
+        if (daysDiff > 0) {
+            output += daysDiff;
+            if (daysDiff === 1) {
+                output += ' day';
+            }
 
-	function ondataupdated(obj) {
-		setAge();
-	}
+            if (daysDiff > 1) {
+                output += ' days';
+            }
+        }
 
-	setAge();
+        if (hoursDiff > 0) {
+            output += ' and ' + hoursDiff;
+            if (daysDiff === 1) {
+                output += ' hour';
+            }
+
+            if (daysDiff > 1) {
+                output += ' hours';
+            }
+        }
+
+        output += ' ago';
+        return output;
+    }
+
+    function ondataupdated(obj) {
+        setAge();
+    }
+
+    setAge();
 </script>
