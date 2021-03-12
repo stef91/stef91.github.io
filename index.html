@@ -27,6 +27,10 @@
         var daysDiff = secondsDiff / 86400 | 0;  ///  number of days
         var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
 
+        if (daysDiff === 0 && hoursDiff === 0) {
+            return 'A few moments ago';
+        }
+
         var output = '';
         if (daysDiff > 0) {
             output += daysDiff + ' ' + pluralize('day', daysDiff);
