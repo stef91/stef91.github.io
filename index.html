@@ -3,22 +3,31 @@
 		var createdTime = window.external.Incident.Created;
 		var updatedTime = window.external.Incident.Updated;
 
-		alert('Test 2');
-		alert(createdTime);
-		alert(updatedTime);
-
-		var ageFieldValue = null;
-		if (typeof updatedTime !== 'undefined') {
-			window.external.Incident.SetCustomFieldByName("c$age_test", "updatedTime diff " + updatedTime);
-			return;
-		}
-
+		var lastSavedChange = null;
 		if (typeof createdTime !== 'undefined') {
-			window.external.Incident.SetCustomFieldByName("c$age_test", "createdTime diff " + createdTime);
-			return;
+			lastSavedChange = createdTime;
 		}
 
-		window.external.Incident.SetCustomFieldByName("c$age_test", "N/A");
+		if (typeof updatedTime !== 'undefined') {
+			lastSavedChange = updatedTime;
+		}
+
+		var lastSavedChangeMessage = computeLastSaved(lastSavedChange);
+		window.external.Incident.SetCustomFieldByName("c$age_test", lastSavedChangeMessage);
+	}
+
+	function computeLastSaved(lastSavedChange) {
+		if (null === lastSavedChange) {
+			return "N/A";
+		}
+
+		var now = let now = Date.now() / 1000 | 0;
+		var diff = now - start;
+
+		var days = diff / 86400 | 0;  ///  number of days 
+		var hours = diff % 86400 / (60 * 60) | 0;  ////  number of hours
+
+		return days + ' days' + hours + ' hours ago';
 	}
 
 	function ondataupdated(obj) {
