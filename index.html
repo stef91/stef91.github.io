@@ -1,69 +1,60 @@
-<html>
-<head>
-    <script>
-        function setAge() {
-            var createdTime = window.external.Incident.Created;
-            var updatedTime = window.external.Incident.Updated;
+<script>
+    function setAge() {
+        var createdTime = window.external.Incident.Created;
+        var updatedTime = window.external.Incident.Updated;
 
-            var lastSavedChange = null;
-            if (typeof createdTime !== 'undefined') {
-                lastSavedChange = createdTime;
-            }
-
-            if (typeof updatedTime !== 'undefined') {
-                lastSavedChange = updatedTime;
-            }
-
-            var lastSavedChangeMessage = computeLastSaved(lastSavedChange);
-            window.external.Incident.SetCustomFieldByName("c$age_test", lastSavedChangeMessage);
+        var lastSavedChange = null;
+        if (typeof createdTime !== 'undefined') {
+            lastSavedChange = createdTime;
         }
 
-        function computeLastSaved(lastSavedChange) {
-            if (null === lastSavedChange) {
-                return "N/A";
-            }
-
-            var nowTimestamp = Date.now() / 1000 | 0;
-            var secondsDiff = nowTimestamp - lastSavedChange;
-
-            var daysDiff = secondsDiff / 86400 | 0;  ///  number of days
-            var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
-
-            var output = '';
-            if (daysDiff > 0) {
-                output += daysDiff + ' ' + pluralize('day', daysDiff);
-            }
-
-            if (daysDiff > 0 && hoursDiff > 0) {
-                output += ' and ';
-            }
-
-            if (hoursDiff > 0) {
-                output += hoursDiff + ' ' + pluralize('hour', hoursDiff);
-            }
-
-            output += ' ago';
-            return output;
+        if (typeof updatedTime !== 'undefined') {
+            lastSavedChange = updatedTime;
         }
 
-        function pluralize(baseString, count) {
-            if (count > 1) {
-                return baseString + 's';
-            }
+        var lastSavedChangeMessage = computeLastSaved(lastSavedChange);
+        window.external.Incident.SetCustomFieldByName("c$age_test", lastSavedChangeMessage);
+    }
 
-            return baseString;
+    function computeLastSaved(lastSavedChange) {
+        if (null === lastSavedChange) {
+            return "N/A";
         }
 
-        function ondataupdated(obj) {
-            setAge();
+        var nowTimestamp = Date.now() / 1000 | 0;
+        var secondsDiff = nowTimestamp - lastSavedChange;
+
+        var daysDiff = secondsDiff / 86400 | 0;  ///  number of days
+        var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
+
+        var output = '';
+        if (daysDiff > 0) {
+            output += daysDiff + ' ' + pluralize('day', daysDiff);
         }
 
-        window.onload = function (event) {
-            setAge();
+        if (daysDiff > 0 && hoursDiff > 0) {
+            output += ' and ';
         }
 
+        if (hoursDiff > 0) {
+            output += hoursDiff + ' ' + pluralize('hour', hoursDiff);
+        }
+
+        output += ' ago';
+        return output;
+    }
+
+    function pluralize(baseString, count) {
+        if (count > 1) {
+            return baseString + 's';
+        }
+
+        return baseString;
+    }
+
+    function ondataupdated(obj) {
         setAge();
-    </script>
-</head>
-<body onload="alert('The Script will load now.')"></body>
-</html>
+    }
+    
+    setAge();
+</script>
