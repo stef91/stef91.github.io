@@ -30,9 +30,6 @@
         var output = '';
         if (daysDiff > 0) {
             output += daysDiff + ' ' + pluralize('day', daysDiff);
-            if (daysDiff > 1) {
-                output += 's';
-            }
         }
 
         if (hoursDiff > 0) {
@@ -52,6 +49,10 @@
     }
 
     function ondataupdated(obj) {
+        setAge();
+    }
+
+    function ondatarefreshed(obj) {
         setAge();
     }
 
