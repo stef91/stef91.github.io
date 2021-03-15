@@ -1,4 +1,18 @@
 <script>
+    window.external.Incident.addEventListener(
+        'change',
+        function () {
+            alert('!!!!!');
+        }
+    );
+
+    window.external.Incident.GetCustomFieldByName("c$age_test").addEventListener(
+        'change',
+        function () {
+            alert('@@@@@@');
+        }
+    );
+
     function setAge() {
         var createdTime = window.external.Incident.Created;
         var updatedTime = window.external.Incident.Updated;
@@ -62,17 +76,5 @@
         setAge();
     }
 
-    window.onpopstate = function(event) {
-        alert('111');
-    };
-
-    window.onbeforeunload = function(e) {
-        alert('2222');
-    };
-
-    window.onunload(function() {
-        alert('33333');
-    });
-    
     setAge();
 </script>
