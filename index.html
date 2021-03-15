@@ -28,32 +28,23 @@
         var hoursDiff = secondsDiff % 86400 / (60 * 60) | 0;  ////  number of hours
 
         if (daysDiff === 0 && hoursDiff === 0) {
-            return 'A few moments ago';
+            return 'just changed';
         }
 
         var output = '';
         if (daysDiff > 0) {
-            output += daysDiff + ' ' + pluralize('day', daysDiff);
+            output += daysDiff + 'd';
         }
 
         if (daysDiff > 0 && hoursDiff > 0) {
-            output += ' and ';
+            output += ' ';
         }
 
         if (hoursDiff > 0) {
-            output += hoursDiff + ' ' + pluralize('hour', hoursDiff);
+            output += hoursDiff + 'h';
         }
 
-        output += ' ago';
         return output;
-    }
-
-    function pluralize(baseString, count) {
-        if (count > 1) {
-            return baseString + 's';
-        }
-
-        return baseString;
     }
 
     function ondataupdated(obj) {
