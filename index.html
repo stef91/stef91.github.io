@@ -1,18 +1,7 @@
 <script>
-
-
-    window.external.addEventListener(
-        'incident_last_update',
-        function () {
-            alert('@@@@@@');
-        }
-    );
-
     function setAge() {
         var createdTime = window.external.Incident.Created;
         var updatedTime = window.external.Incident.Updated;
-
-        alert(window.event);
 
         var lastSavedChange = null;
         if (typeof createdTime !== 'undefined') {
